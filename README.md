@@ -8,24 +8,13 @@ This system predicts short-horizon returns on a basket of large-cap US equities 
 
 ## Architecture
 
-Data Ingestion (IBKR)
-│
-▼
-Feature Engineering (90 alpha factors)
-│
-▼
-Model Training (Ridge / XGBoost) ── Walk-Forward Validation (5 folds)
-│
-▼
-Signal Generation ── Kelly-weighted Position Sizing ── Regime Filter
-│
-▼
-Risk Management (macro-event blackout, volatility scaling, drawdown control)
-│
-▼
-Live Execution (IBKR API) ── Automated Monitoring & Alerting
-
-
+1. **Data Ingestion** — IBKR hourly bars (~5 years of history)
+2. **Feature Engineering** — 90 alpha factors (price action, volatility, implied/realized vol, intraday microstructure)
+3. **Model Training** — Ridge / XGBoost, per-ticker selection based on out-of-sample IC
+4. **Walk-Forward Validation** — 5 rolling folds, robustness-checked before every deployment
+5. **Signal Generation** — Kelly-weighted position sizing, confidence scaling, regime filter
+6. **Risk Management** — macro-event blackout (FOMC/CPI/NFP), volatility scaling, drawdown control
+7. **Live Execution** — IBKR API, automated SMS monitoring, end-of-day position closeout
 
 ## Key Features
 
@@ -41,8 +30,6 @@ Live Execution (IBKR API) ── Automated Monitoring & Alerting
 ## Performance Snapshot (Backtest, latest validation)
 
 *Backtested on ~5 years of hourly market data (2021–2026).*
-
-| Metric | Value |
 
 | Metric | Value |
 |---|---|
