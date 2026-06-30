@@ -40,6 +40,10 @@ Live Execution (IBKR API) ── Automated Monitoring & Alerting
 
 ## Performance Snapshot (Backtest, latest validation)
 
+*Backtested on ~5 years of hourly market data (2021–2026).*
+
+| Metric | Value |
+
 | Metric | Value |
 |---|---|
 | Cumulative return (strategy) | +40.7% |
